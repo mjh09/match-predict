@@ -8,14 +8,58 @@ from app import app
 from joblib import load
 import pandas as pd
 
-model = load('assets/alig_predict_model.joblib')
+app_model = load('assets/alig_predict_app_model.joblib')
 
 column1 = dbc.Col(
     [
         dcc.Markdown('## Predictions', className='mb-5'),
+        dcc.Markdown('#### Player A Race'),
+        dcc.Dropdown(
+            id='player_a_race',
+            options = [
+                {'label': 'Random', 'value': 4},
+                {'label': 'Protoss', 'value': 3},
+                {'label': 'Terran', 'value': 2},
+                {'label': 'Zerg', 'value': 1}
+            ],
+            value = 4,
+            className='mb-5',
+        ),
+        dcc.Markdown('#### Player B Race'),
+        dcc.Dropdown(
+            id='player_b_race',
+            options = [
+                {'label': 'Random', 'value': 4},
+                {'label': 'Protoss', 'value': 3},
+                {'label': 'Terran', 'value': 2},
+                {'label': 'Zerg', 'value': 1}
+            ],
+            value = 4,
+            className='mb-5',
+        ),
+        dcc.Markdown('#### Player A Smoothed Rating'),
+        dcc.Slider(
+            id='player_a_sRating',
+            min=-1.1,
+            max=2.1,
+            step=0.1,
+            value=0,
+            marks={n: str(n) for n in range(-1,2,1)},
+            className='mb-5',
+        ),
+        dcc.Markdown('#### Player B Smoothed Rating'),
+        dcc.Slider(
+            id='player_b_sRating',
+            min=-1.1,
+            max=2.1,
+            step=0.1,
+            value=0,
+            marks={n: str(n) for n in range(-1,2,1)},
+            className='mb-5',
+        ),
         dcc.Markdown('#### Player A Rating'),
         dcc.Slider(
-            id='player_a_sRating'
+            id='player_a_rating',
             min=-1.1,
             max=2.1,
             step=0.1,
@@ -25,7 +69,7 @@ column1 = dbc.Col(
         ),
         dcc.Markdown('#### Player B Rating'),
         dcc.Slider(
-            id='player_b_sRating'
+            id='player_b_rating',
             min=-1.1,
             max=2.1,
             step=0.1,
@@ -33,30 +77,6 @@ column1 = dbc.Col(
             marks={n: str(n) for n in range(-1,2,1)},
             className='mb-5',
         ),
-        dcc.Markdown('#### Player A Race'),
-        dcc.Dropdown(
-            id='player_a_race',
-            options = [
-                {'label': 'Random', 'value': '4'},
-                {'label': 'Protoss', 'value': '3'},
-                {'label': 'Terran', 'value': '2'},
-                {'label': 'Zerg', 'value': '1'}
-            ],
-            value = '4',
-            className='mb-5',
-        ),
-        dcc.Markdown('#### Player B Race'),
-        dcc.Dropdown(
-            id='player_b_race',
-            options = [
-                {'label': 'Random', 'value': '4'},
-                {'label': 'Protoss', 'value': '3'},
-                {'label': 'Terran', 'value': '2'},
-                {'label': 'Zerg', 'value': '1'}
-            ],
-            value = '4',
-            className='mb-5',
-
     ],
     md=4,
 )
@@ -71,13 +91,15 @@ column2 = dbc.Col(
 layout = dbc.Row([column1, column2])
 
 @app.callback(
-    Output('prediction-content', 'children')
-    [Input('player_a_sRating', 'value'), Input('player_a_race')],
+    Output('prediction-content', 'children'),
+    [Input('player_a_race', 'value'), Input('player_b_race', 'value'),
+     Input('player_a_sRating', 'value'), Input('player_b_sRating', 'value'),
+     Input('player_a_rating', 'value'), Input('player_b_rating', 'value')],
 )
-def predict(player_a_sRating, player_a_race):
-    df = pd.Dataframe(
-        columns=['player_a_sRating', 'player_a_race'],
-        data=[[player_a_sRating, player_a_race]]
+def predict(player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating):
+    df = pd.DataFrame(
+        columns=['player_a_race', 'player_b_race', 'player_a_sRating', 'player_b_sRating', 'player_a_rating', 'player_b_rating'],
+        data=[[player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating]]
     )
-    y_pred = model.predict(df)[0]
-    return f'{y_pred: .0f} Wins!'
+    y_pred = app_model.predict(df)[0]
+    return f'{y_pred} Won!'
