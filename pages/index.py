@@ -37,7 +37,8 @@ column1 = dbc.Col(
             If gambling is your thing, you can use this as a resource to adjust your betting strategy and maximize returns.
 
             Or, you can simply create your own values for the model and see the outcome.
-
+            
+            Don't forget to check out the Insights and Process page to discover what's going on behind the scenes!
 
             """
         ),

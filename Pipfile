@@ -17,6 +17,7 @@ xgboost = "*"
 scikit-learn = "*"
 eli5 = "*"
 seaborn = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.7"
