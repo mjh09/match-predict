@@ -12,6 +12,11 @@ gunicorn = "*"
 plotly = "*"
 jupyter = "*"
 pandas = "*"
+matplotlib = "*"
+xgboost = "*"
+scikit-learn = "*"
+eli5 = "*"
+seaborn = "*"
 
 [requires]
 python_version = "3.7"

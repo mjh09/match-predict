@@ -29,17 +29,19 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Value Proposition
+            ## Predict StarCraft2 match results
+            This app can help you predict the outcome of a 1v1 SC2 match. 
 
-            Emphasize how the app will benefit users. Don't emphasize the underlying technology.
+            You can follow your favorite player and watch them crush the odds.
 
-            ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
+            If gambling is your thing, you can use this as a resource to adjust your betting strategy and maximize returns.
 
-            ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
+            Or, you can simply create your own values for the model and see the outcome.
+
 
             """
         ),
-        dcc.Link(dbc.Button('Call To Action', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Start Predicting!', color='primary'), href='/predictions')
     ],
     md=4,
 )
