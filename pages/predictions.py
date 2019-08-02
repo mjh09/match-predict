@@ -133,4 +133,4 @@ def predict(player_a_race, player_b_race, player_a_sRating, player_b_sRating, pl
         data=[[player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating]],
     )
     y_pred = app_model.predict(df)[0]
-    print(f'{y_pred} won!')
+    return (f'{y_pred} won!')
