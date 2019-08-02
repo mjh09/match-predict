@@ -108,7 +108,7 @@ column1 = dbc.Col(
             className='mb-4',
         ),
     ],
-    md=6,
+    md=8,
 )
 
 column2 = dbc.Col(
