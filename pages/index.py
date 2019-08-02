@@ -4,7 +4,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
-print(px.__version__)
+from joblib import load
+
 from app import app
 
 """
@@ -36,7 +37,7 @@ column1 = dbc.Col(
 
             If gambling is your thing, you can use this as a resource to adjust your betting strategy and maximize returns.
 
-            Or, you can simply create your own values for the model and see the outcome.
+            Or, you can simply create your own values for the model and see the predicted outcome.
             
             Don't forget to check out the Process and Results page to discover what's going on behind the scenes!
 
@@ -47,13 +48,13 @@ column1 = dbc.Col(
     md=4,
 )
 
-gapminder = px.data.gapminder()
-fig = px.scatter(gapminder.query("year==2007"), x="gdpPercap", y="lifeExp", size="pop", color="continent",
-           hover_name="country", log_x=True, size_max=60)
+
+
+
 
 column2 = dbc.Col(
     [
-        dcc.Graph(figure=fig),
+        #dcc.Graph(figure=fig),
     ]
 )
 

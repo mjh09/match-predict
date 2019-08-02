@@ -18,6 +18,7 @@ scikit-learn = "==0.20.3"
 eli5 = "*"
 seaborn = "*"
 joblib = "*"
+ipywidgets = "*"
 
 [requires]
 python_version = "3.7"
