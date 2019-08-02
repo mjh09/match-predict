@@ -108,7 +108,7 @@ column1 = dbc.Col(
             className='mb-4',
         ),
     ],
-    md=8,
+    md=6,
 )
 
 column2 = dbc.Col(
@@ -130,7 +130,7 @@ layout = dbc.Row([column1, column2])
 def predict(player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating):
     df = pd.DataFrame(
         columns=['player_a_race', 'player_b_race', 'player_a_sRating', 'player_b_sRating', 'player_a_rating', 'player_b_rating'],
-        data=[[player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating]]
+        data=[[player_a_race, player_b_race, player_a_sRating, player_b_sRating, player_a_rating, player_b_rating]],
     )
     y_pred = app_model.predict(df)[0]
     print(f'{y_pred} won!')
