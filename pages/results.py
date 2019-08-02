@@ -15,11 +15,11 @@ column1 = dbc.Col(
 
             Lets start with the majority classifier. This can be helpful in determining how effective
             the classifier is. This can be done by normalizing the instances of each class.
-            PLayer A won roughly 63 percent of the time. The models accuracy should do better than that.
+            PLayer A won roughly 63 percent of the time. The model should do better than that.
 
             """
         ),
-        html.Img(src='/assets/baseline.PNG', style={'width':'75%', 'height': '50%'})
+        html.Img(src='/assets/baseline.PNG', style={'width':'100%','hieght':'100%'})
     ],
     md=10,
 )
