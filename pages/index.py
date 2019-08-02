@@ -5,12 +5,12 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
 from joblib import load
-from ipywidgets import interact, fixed
+
 from app import app
 
-app_model = load('assets/alig_predict_app_model.joblib')
-X_test = load('assets/X_test.joblib')
-y_test = load('assets/y_test.joblib')
+
+app_df = load('assets/app_df.joblib')
+
 """
 https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 
@@ -33,16 +33,50 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Predict StarCraft2 match results
-            This app can help you predict the outcome of a 1v1 SC2 match. 
+            # Predict StarCraft2 match results
 
-            You can follow your favorite player and watch them crush the odds.
 
-            If gambling is your thing, you can use this as a resource to adjust your betting strategy and maximize returns.
 
-            Or, you can simply create your own values for the model and see the predicted outcome.
-            
-            Don't forget to check out the Process and Results page to discover what's going on behind the scenes!
+
+
+
+
+            #### This app can help you predict the outcome of a 1v1 SC2 match. 
+
+
+
+
+
+
+            #### You can follow your favorite player and watch them crush the odds.
+
+
+
+
+
+
+            #### If gambling is your thing, you can use this as a resource to adjust your betting strategy and maximize returns.
+
+
+
+
+
+
+            #### Or, you can simply create your own values for the model and see the predicted outcome.
+
+
+
+
+
+
+            #### Take note of the graph distributions for predicting!
+
+
+
+
+
+
+            ####  Don't forget to check out the Process and Results page to discover what's going on behind the scenes!
 
             """
         ),
@@ -51,26 +85,23 @@ column1 = dbc.Col(
     md=4,
 )
 
-y_pred_proba = app_model.predict_proba(X_test)[:, 1]
 
-def set_threshold(y_true, y_pred_proba, threshold=0.5):
-    class_0, class_1 = unique_labels(y_true)
-    y_pred = np.full_like(y_true, fill_value=class_0)
-    y_pred[y_pred_proba > threshold] = class_1
-    
-    ax = sns.distplot(y_pred_proba)
-    ax.axvline(threshold, color='red')
-    plt.title('Distribution of predicted probabilities')
+fig = px.scatter(app_df, x="player_a_sRating", y="player_a_rating", color="player_a_race",)
 
-interact(set_threshold, 
-         y_true=fixed(y_test), 
-         y_pred_proba=fixed(y_pred_proba), 
-         threshold=(0,1,0.05));
+fig2 =px.scatter(app_df,x="player_b_sRating", y="player_b_rating", color='player_b_race',)
+
 
 
 column2 = dbc.Col(
     [
-        #dcc.Graph(figure=fig),
+        dcc.Markdown("## Player A rating correlation"),
+    
+        dcc.Graph(figure=fig),
+
+        dcc.Markdown("## Player B rating correlation"),
+
+        dcc.Graph(figure=fig2),
+        
     ]
 )
 
