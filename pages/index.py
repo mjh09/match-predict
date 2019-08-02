@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
-
+print(px.__version__)
 from app import app
 
 """
@@ -38,7 +38,7 @@ column1 = dbc.Col(
 
             Or, you can simply create your own values for the model and see the outcome.
             
-            Don't forget to check out the Insights and Process page to discover what's going on behind the scenes!
+            Don't forget to check out the Process and Results page to discover what's going on behind the scenes!
 
             """
         ),
