@@ -11,20 +11,24 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Insights
+            ## Results
 
+            Lets start with the majority classifier. This can be helpful in determining how effective
+            the classifier is. This can be done by normalizing the instances of each class.
+            PLayer A won roughly 63 percent of the time. The models accuracy should do better than that.
 
             """
         ),
+        html.Img(src='/assets/baseline.PNG', style={'width':'75%', 'height': '50%'})
     ],
-    md=4,
+    md=10,
 )
 
 
 column2 = dbc.Col(
     [
-        
+       
     ]
 )
 
-layout = dbc.Row([column1, column2])
+layout = dbc.Row([column1])
