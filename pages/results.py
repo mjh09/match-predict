@@ -13,7 +13,7 @@ column1 = dbc.Col(
         
             ## Results
 
-            Lets start with the majority classifier. This can be helpful in determining how effective
+            Lets start with the **majority classifier**. This can be helpful in determining how effective
             the classifier is. Player A won roughly 63 percent of the time. The model should do better than that.
 
             """
@@ -22,14 +22,14 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
             After training the model we can get the score from both the training set and test set.
-            The test score can show us how well the model is generalizing to new data.     
+            The **test score** can show us how well the model is generalizing to new data.     
             """
         ),
         html.Img(src='/assets/newscore.PNG', style={'width':'30%',}),
         dcc.Markdown(
             """
-            Not bad, almost 82 percent accuracy. The model has given us a near 20 percent increase from
-            the baseline. Lets see how it's doing on precision and recall. See the Process page for an eli5 on these metrics.
+            Not bad, almost 82 percent accuracy. The model has given us a near *20 percent* increase from
+            the baseline. Lets see how it's doing on **precision and recall**. See the Process page for an eli5 on these metrics.
             Or check [here](https://en.wikipedia.org/wiki/Precision_and_recall).
             """
         ),
@@ -37,7 +37,7 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
             It seems to be doing mariginally better with the majority class. Maybe because there was more instances 
-            to learn from? Next, we'll take a look at feature importances and see if we can discover what is moving 
+            to learn from? Next, we'll take a look at **feature importances** and see if we can discover what is moving 
             the needle for the model. I'll decode some of the meaning after.
             """
         ),
@@ -58,13 +58,13 @@ column1 = dbc.Col(
             Except for the four ratings I manually changed to A & B, all other columns have had a suffix added via the default
             merge function from pandas for handling identical column names. Player A's info has an `_x` added, and player B
             `_y`. Also, the `_vz` `_vp` `_vt` are vs. race respectively. Okay, now that we've de-mystified some of the columns names, 
-            we should have a look at permutation importances. 
+            we should have a look at **permutation importances**. 
             """
         ),
         html.Img(src='assets/permimp.PNG', style={'width':'30%'}),
         dcc.Markdown(
             """
-            This image was created using the `eli5` package for python. Permutation importance is decided by shuffling
+            This image was created using the `eli5` package for python. **Permutation importance** is decided by shuffling
             the data for each column one at a time and re-scoring to see the effect. Through this method, the model can 
             decide which features are the most important by which columns alter the scoring metric the most. This makes sense
             because if the column's values had a direct effect on the outcome, shuffling them would have a noticable effect. Conversely, if the
@@ -74,7 +74,7 @@ column1 = dbc.Col(
             That's all I have for you today. Again, credit to [Aligulac](http://aligulac.com) for hosting the data. The notebook
             for this model can be found in my github repo link below. Feel free to give it a look and see if you can do better!
             This model certainly has room for improvement.
-            
+
             I'd love to hear back about any criticisms, advice, or questions about the project.
             """
         ),
