@@ -6,7 +6,6 @@ Making win/loss predictions from [Aligulac's](http://aligulac.com/) dataset<br/>
 <br/>
 
 ### Tech Stack:
-<br/>
 Python <br/>
 Pandas<br/>
 Scikit-Learn<br/>
