@@ -3,7 +3,8 @@ Making win/loss predictions from [Aligulac's](http://aligulac.com/) dataset<br/>
 <br/>
 # App delpoyed at [Heroku](https://sc2predict.herokuapp.com/) 
 <br/>
-# Tech Stack 
+# Tech Stack:
+<br/>
 Python <br/>
 Pandas<br/>
 Scikit-Learn<br/>
