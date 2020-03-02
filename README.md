@@ -1,24 +1,27 @@
-# Predicting SC2 matches
+# Match Predict
+Making win/loss predictions from [Aligulac's](http://aligulac.com/) dataset
 
-Get data from aligulac.com(credit to them for hosting the data)
-I used their dump file and restored to local db
+#### App delpoyed at [Heroku](https://sc2predict.herokuapp.com/) <br>
 
-export match & rating table to csv
+#### Tech Stack: <br/>
+Python
+Pandas
+Scikit-Learn
+XGBoost
+Dash
+#### Notebook(s)
+[ipynb notebook](https://github.com/mjh09/match-predict/blob/master/notebooks/alig_predict.ipynb)
 
-read in csv files
+#### The Data
+Trimmed to include games from the start of LOTV expansion to date of database dump(June 2019)
+Reshaped to aggregate wanted stats
+Train/Test split at 75/25
 
-organize wrangle data
+#### The Model
+XGBoost Classification algorithm
+Hyper-Parameterized with scikit-learns's RandomizedSearchCV
+Features decided via permutation importance
+Evaluted with the accuracy scoring metric
 
-trainval/test split data
-
-instantiate/fit model
-
-tune model with hyperparameters
-
-score model
-
-inspect feature importance
-
-drop/manipulate columns as necessary
-
-make vis
+#### Front-End
+Boilerplate Dash framework
