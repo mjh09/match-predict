@@ -12,8 +12,15 @@ Scikit-Learn<br/>
 XGBoost<br/>
 Dash<br/>
 <br/>
+
+### Dependancies:
+[Pipfile](https://github.com/mjh09/match-predict/blob/master/Pipfile)
+
 ### Notebook(s):
 [ipynb notebook](https://github.com/mjh09/match-predict/blob/master/notebooks/alig_predict.ipynb)<br/>
+ - Downlaod data from [Source](http://aligulac.com/)<br/>
+ - Input own path and file names
+ - Execute cells top-to-bottom
 <br/>
 
 ### The Data:
